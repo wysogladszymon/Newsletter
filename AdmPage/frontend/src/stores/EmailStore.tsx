@@ -1,21 +1,43 @@
-import {observable, action, computed} from 'mobx';
+import { observable, action, makeAutoObservable, computed } from "mobx";
+import { generateTemplate } from "../assets/template";
 
 export class EmailStore {
+  constructor() {
+    makeAutoObservable(this, {
+      emailBody: computed,
+    });
+  }
+
   @observable loaded = false;
 
-  @observable emailTitle = '';
+  @observable emailTitle = "Email Title";
 
-  @observable emailBody = '';
+  @observable emailHeader = "Email Header";
 
-  @observable emailAuthor = '';
-  
+  @observable emailAuthor = "asia@fitproject.com";
+
+  @observable emailMessage = "";
+
+  @observable inputBody = "Your message";
+
+  @action setInputBody = (inputBody: string) => {
+    this.inputBody = inputBody;
+  };
+
+  @action setEmailMessage = (message: string) => {
+    this.emailMessage = message;
+  };
   @action setEmailTitle = (title: string) => {
     this.emailTitle = title;
   };
 
-  @action setEmailBody = (body: string) => {
-    this.emailBody = body;
+  @action setEmailHeader = (header: string) => {
+    this.emailHeader = header;
   };
+
+  get emailBody() {
+    return generateTemplate(this.emailHeader, this.inputBody);
+  }
 
   @action setEmailAuthor = (author: string) => {
     this.emailAuthor = author;
@@ -23,5 +45,5 @@ export class EmailStore {
 
   @action load = () => {
     this.loaded = true;
-  }
+  };
 }

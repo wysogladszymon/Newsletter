@@ -1,13 +1,13 @@
 import {FC, ReactNode, useContext, createContext } from "react";
 import { EmailStore } from "../stores/EmailStore";
 
-interface stores {
+interface storesInterface {
   emailStore?: EmailStore;
 }
 
-const StoreContext = createContext<stores | null >(null);
+const StoreContext = createContext<storesInterface | null >(null);
 
-export const useStoree = () => {
+export const useStores = () => {
   const stores = useContext(StoreContext);
   
   if (!stores) {
