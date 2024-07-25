@@ -40,7 +40,7 @@ def main():
   myEmail = config['EMAIL_ADDRESS']
   myPassword = config["EMAIL_PASSWORD"]
   es = EmailSender(myEmail, myPassword)
-  es.send_multiple_emails_html(['wysu@onet.pl', 'wyseq@onet.pl'], 'test',msgText)
+  es.send_multiple_emails_html(['wysu@onet.pl'], 'test',msgText)
 
 
 if __name__ == '__main__':
