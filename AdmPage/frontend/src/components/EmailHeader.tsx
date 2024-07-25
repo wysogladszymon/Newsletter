@@ -16,8 +16,8 @@ export const EmailHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> =
           <SvgEmailOpen />
         </div>
         <Stack className="">
-          <p className="text-xl text-gray-800">{emailStore?.emailTitle}</p>
-          <p className="text-m text-gray-600">{emailStore?.emailAuthor}</p>
+          <p className="text-xl text-gray-800">{emailStore?.emailTitle || '.'}</p>
+          <p className="text-m text-gray-600">{emailStore?.emailAuthor || '.'}</p>
         </Stack>
       </Stack>
     );
