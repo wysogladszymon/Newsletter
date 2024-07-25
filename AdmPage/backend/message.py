@@ -196,110 +196,51 @@ msgText = '''
                     font-family: Helvetica, sans-serif;
                     font-size: 16px;
                     vertical-align: top;
-                    box-sizing: border-box;
-                    padding: 24px;
                   "
                   valign="top"
                 >
-                  <p
-                    style="
-                      font-family: Helvetica, sans-serif;
-                      font-size: 16px;
-                      font-weight: normal;
-                      margin: 0;
-                      margin-bottom: 16px;
-                    "
-                  >
-                    Hi there
-                  </p>
-                  <p
-                    style="
-                      font-family: Helvetica, sans-serif;
-                      font-size: 16px;
-                      font-weight: normal;
-                      margin: 0;
-                      margin-bottom: 16px;
-                    "
-                  >
-                    Sometimes you just want to send a simple HTML email with a
-                    simple design and clear call to action. This is it.
-                  </p>
-                  <table
-                    role="presentation"
-                    border="0"
-                    cellpadding="0"
-                    cellspacing="0"
-                    class="btn btn-primary"
-                    style="
-                      border-collapse: separate;
-                      mso-table-lspace: 0pt;
-                      mso-table-rspace: 0pt;
-                      box-sizing: border-box;
-                      width: 100%;
-                      min-width: 100%;
-                    "
-                    width="100%"
-                  >
+                  <table>
                     <tbody>
                       <tr>
-                        <td
-                          align="left"
-                          style="
-                            font-family: Helvetica, sans-serif;
-                            font-size: 16px;
-                            vertical-align: top;
-                            padding-bottom: 16px;
-                          "
-                          valign="top"
-                        >
-                          <table
-                            role="presentation"
-                            border="0"
-                            cellpadding="0"
-                            cellspacing="0"
+                        <td style="padding: 24px">
+                          <p
                             style="
-                              border-collapse: separate;
-                              mso-table-lspace: 0pt;
-                              mso-table-rspace: 0pt;
-                              width: auto;
+                              font-family: Helvetica, sans-serif;
+                              font-size: 20px;
+                              font-weight: normal;
+                              margin: 0;
+                              margin-bottom: 16px;
+                              color: #9dca00;
                             "
                           >
+                            ${title}
+                          </p>
+                          <p
+                            style="
+                              font-family: Helvetica, sans-serif;
+                              font-size: 16px;
+                              font-weight: normal;
+                              margin: 0;
+                              margin-bottom: 16px;
+                            "
+                          >
+                            Sometimes you just want to send a simple HTML email with a simple design and clear call to action. This is it.
+                          </p>
+                          <table align="center" style="margin: 0 auto; text-align: center;">
                             <tbody>
                               <tr>
-                                <td
-                                  style="
-                                    font-family: Helvetica, sans-serif;
-                                    font-size: 16px;
-                                    vertical-align: top;
-                                    border-radius: 4px;
-                                    text-align: center;
-                                    background-color: #0867ec;
-                                  "
-                                  valign="top"
-                                  align="center"
-                                  bgcolor="#0867ec"
-                                >
+                                <td>
                                   <a
-                                    href="http://htmlemail.io"
+                                    href="https://fitproject.pl/"
                                     target="_blank"
-                                    style="
-                                      border: solid 2px #0867ec;
-                                      border-radius: 4px;
-                                      box-sizing: border-box;
-                                      cursor: pointer;
-                                      display: inline-block;
-                                      font-size: 16px;
-                                      font-weight: bold;
-                                      margin: 0;
-                                      padding: 12px 24px;
-                                      text-decoration: none;
-                                      text-transform: capitalize;
-                                      background-color: #0867ec;
-                                      border-color: #0867ec;
-                                      color: #ffffff;
-                                    "
-                                    >Call To Action</a
                                   >
+                                    <img
+                                      src="https://i.ibb.co/bgb2nKC/logo.png"
+                                      alt="logo"
+                                      border="0"
+                                      style="margin-top: 20px"
+                                    />
+                                  </a>
                                 </td>
                               </tr>
                             </tbody>
@@ -308,56 +249,65 @@ msgText = '''
                       </tr>
                     </tbody>
                   </table>
-                  <p
+                  <div
                     style="
-                      font-family: Helvetica, sans-serif;
-                      font-size: 16px;
-                      font-weight: normal;
-                      margin: 0;
-                      margin-bottom: 16px;
+                      background-color: #9dca00;
+                      border-radius: 0 0 16px 16px;
+                      color: white;
+                      padding: 10px;
                     "
                   >
-                    This is a really simple email template. It's sole purpose is
-                    to get the recipient to click the button with no
-                    distractions.
-                  </p>
-                  <table align="center">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <a href="https://fitproject.pl/" target="_blank">
-                            <img
-                              src="https://i.ibb.co/bgb2nKC/logo.png"
-                              alt="logo"
-                              border="0"
-                              style="margin: 20px"
-                            />
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <p
-                    style="
-                      font-family: Helvetica, sans-serif;
-                      font-size: 16px;
-                      font-weight: normal;
-                      margin: 0;
-                      margin-bottom: 16px;
-                    "
-                  >
-                    Obserwuj nasze social media!
-                  </p>
-                  <img
-                    src="https://i.ibb.co/r70NhdQ/facebook.png"
-                    alt="facebook"
-                    border="0"
-                  />
-                  <img
-                    src="https://i.ibb.co/74Dt6Pc/instagram.png"
-                    alt="instagram"
-                    border="0"
-                  />
+                    <table align="center">
+                      <tbody>
+                        <tr>
+                          <td
+                            style="
+                              font-family: Helvetica, sans-serif;
+                              font-size: 18px;
+                              font-weight: normal;
+                              margin: 0;
+                            "
+                          >
+                            Obserwuj nasze social media:
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table align="center">
+                      <tbody>
+                        <tr>
+                          <td style="padding-inline: 5px">
+                            <a
+                              target="_blank"
+                              href="https://www.facebook.com/fitprojectcatering"
+                            >
+                              <img
+                                height="24px"
+                                style="max-height:24px;"
+                                src="https://i.ibb.co/wKxzwnP/facebook.png"
+                                alt="facebook"
+                                border="0"
+                              />
+                            </a>
+                          </td>
+                          <td style="padding-inline: 5px">
+                            <a
+                              target="_blank"
+                              href="https://www.instagram.com/fitprojectfitproject/"
+                            >
+                              <img
+                                height="24px"
+                                style="max-height:24px;"
+                                src="https://i.ibb.co/WsJbKb7/instagram.png"
+                                alt="instagram"
+                                border="0"
+                              />
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </td>
               </tr>
 
@@ -407,46 +357,22 @@ msgText = '''
                         font-size: 16px;
                         text-align: center;
                       "
-                      >Company Inc, 7-11 Commercial Ct, Belfast BT1 2NB</span
+                      >Fit Project 2024, biuro@fitproject.pl </span
                     >
                     <br />
-                    Don't like these emails?
-                    <a
-                      href="http://htmlemail.io/blog"
-                      style="
-                        text-decoration: underline;
-                        color: #9a9ea6;
-                        font-size: 16px;
-                        text-align: center;
-                      "
-                      >Unsubscribe</a
-                    >.
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="content-block powered-by"
-                    style="
-                      font-family: Helvetica, sans-serif;
-                      vertical-align: top;
-                      color: #9a9ea6;
-                      font-size: 16px;
-                      text-align: center;
-                    "
-                    valign="top"
-                    align="center"
-                  >
-                    Powered by
-                    <a
-                      href="http://htmlemail.io"
-                      style="
-                        color: #9a9ea6;
-                        font-size: 16px;
-                        text-align: center;
-                        text-decoration: none;
-                      "
-                      >HTMLemail.io</a
-                    >
+                    Nie chcesz otrzymywać maili?
+                    <strong>
+                      <a
+                        href="http://htmlemail.io/blog"
+                        style="
+                          text-decoration: none;
+                          color: #9a9ea6;
+                          font-size: 16px;
+                          text-align: center;
+                        "
+                        >Usuń subskrypcję</a
+                      >.
+                    </strong>
                   </td>
                 </tr>
               </table>
@@ -471,6 +397,7 @@ msgText = '''
     </table>
   </body>
 </html>
+
 
 
 '''
