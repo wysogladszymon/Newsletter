@@ -1,38 +1,70 @@
-from fastapi import FastAPI, Request
-from emailSender import EmailSender
+from fastapi import FastAPI, WebSocket
 from dotenv import dotenv_values
 from pydantic import BaseModel
 import uvicorn
+from emailSender import EmailSender
+from mongoNewsletter import MongoNewsletter
+from typing import Optional
+from fastapi.middleware.cors import CORSMiddleware
 
 class EmailJSON(BaseModel):
+  receiver: Optional[str]
   msg: str
   title: str
-
-app = FastAPI()
 
 config = dotenv_values(".env")
 myEmail = config['EMAIL_ADDRESS']
 myPassword = config["EMAIL_PASSWORD"]
-es = EmailSender(myEmail, myPassword)
+mongoPassword = config['MONGO_DB_PASSWORD']
 
+origins = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+app = FastAPI()
+es = EmailSender(myEmail, myPassword)
+mongo = MongoNewsletter(mongoPassword)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Możesz podać listę dozwolonych adresów
+    allow_credentials=True,
+    allow_methods=["*"],  # Umożliwia wszystkie metody (GET, POST itp.)
+    allow_headers=["*"],  # Umożliwia wszystkie nagłówki
+)
 
 @app.get('/user-email')
 def get_user_email():
   return {"email": myEmail}
 
 # needs to connect to database
-@app.post('/all')
-def send_to_all(req : Request):
-  pass
-
-
-@app.post('/user/{userEmail}')
-def sent_to_single_user(userEmail , email : EmailJSON):
+@app.websocket('/all')
+async def send_to_all(websocket: WebSocket):
+  await websocket.accept()
   try:
-    es.send_email_html(userEmail, email.title, email.msg)
-    return {"Status": 'success'}
+    data = await websocket.receive_json()
+    emailProps = EmailJSON(**data)
+    receivers = mongo.getAllEmails()
+    for receiver in receivers:
+      try:
+        es.send_email_html(receiver, emailProps.title, emailProps.msg)
+        await websocket.send_json({"Status": 'success', "msg": f'Email sent to {receiver}!'})
+      except Exception as e:
+        await websocket.send_json({"status": "error", "msg": f'Something went wrong with {receiver}: {str(e)}'})
+  except Exception as e:
+    await websocket.send_json({"status": "error", "msg": str(e)})
+  finally:
+    await websocket.close()
+
+
+@app.post('/user/')
+def sent_to_single_user(emailProps : EmailJSON):
+  try:
+    es.send_email_html(emailProps.receiver, emailProps.title, emailProps.msg)
+    return {"Status": 'success', "msg": f'Email sent to {emailProps.receiver}'}
   except:
     return {"status": "error"}
   
 if __name__ == "__main__":
-  uvicorn.run(app, host="0.0.0.0", port=30000)
+  uvicorn.run(app, host="127.1.1.1", port=30000)

@@ -5,6 +5,8 @@ import Form from "react-bootstrap/Form";
 import { useStores } from "../hooks/useStores";
 import { Button, Stack, Tab, Tabs } from "react-bootstrap";
 
+const backendAddress="127.0.0.1:8000";
+
 export const EmailForm: React.FC<React.HTMLAttributes<HTMLDivElement>> =
   observer((props) => {
     const { emailStore } = useStores();
@@ -22,6 +24,25 @@ export const EmailForm: React.FC<React.HTMLAttributes<HTMLDivElement>> =
         textarea.selectionStart = textarea.selectionEnd = start + 1;
       }
     };
+
+    const sendEmail = async () =>{
+      const requestProps = {
+        title: emailStore?.emailTitle ?? ' ',
+        msg: emailStore?.emailBody ?? ' ',
+        receiver: receiver
+      };
+      console.log(requestProps)
+      console.log(receiver)
+      const response = await fetch(`http://${backendAddress}/user/`, {
+        method: 'POST',
+        body: JSON.stringify(requestProps),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      const result = await response.json()
+      console.log(result);
+    }
     return (
       <div className="w-full p-20 bg-gray-200 h-full" {...props}>
         <div className="text-2xl mb-20">
@@ -74,7 +95,7 @@ export const EmailForm: React.FC<React.HTMLAttributes<HTMLDivElement>> =
           <Stack>
             <Tabs
             defaultActiveKey={"everyone"}>
-              <Tab eventKey="oneReceiver" title="One receiver">
+              <Tab eventKey="oneReceiver" title="One receiver" >
                 <FloatingLabel
                   controlId="floatingInput"
                   label="Receiver"
@@ -82,7 +103,9 @@ export const EmailForm: React.FC<React.HTMLAttributes<HTMLDivElement>> =
                 >
                   <Form.Control
                     onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                      setReceiver(e.target.value)
+                      {setReceiver(e.target.value);
+                        console.log(receiver)
+                      }
                     }
                     type="email"
                     placeholder="name@example.com"
@@ -92,6 +115,7 @@ export const EmailForm: React.FC<React.HTMLAttributes<HTMLDivElement>> =
                   variant="primary"
                   className="mt-3 ml-auto"
                   style={{ backgroundColor: "#9dca00", border: "none" }}
+                  onClick={sendEmail}
                 >
                   Send
                 </Button>

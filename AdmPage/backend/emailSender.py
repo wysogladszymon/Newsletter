@@ -26,13 +26,7 @@ class EmailSender:
 
   def send_multiple_emails_html(self, receivers, subject, message):
     for receiver in receivers:
-      msg = EmailMessage()
-      msg['Subject'] = subject
-      msg['From'] = self.EMAIL_ADDRESS
-      msg.set_content(message,subtype='html')
-      msg['To'] = receiver
-      self.server.send_message(msg)
-      print(f'Email from {self.EMAIL_ADDRESS} to {receiver} sent!')
+      self.send_email_html(receiver, subject, message)
 
 
 
