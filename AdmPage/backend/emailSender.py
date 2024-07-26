@@ -2,8 +2,6 @@ import smtplib
 from email.message import EmailMessage
 from dotenv import dotenv_values
 from message import msgText
-from typing import Optional
-from pydantic import BaseModel
 
 class EmailSender:
   def __init__ (self, EMAIL_ADDRESS, EMAIL_PASSWORD):
@@ -36,10 +34,7 @@ class EmailSender:
       self.server.send_message(msg)
       print(f'Email from {self.EMAIL_ADDRESS} to {receiver} sent!')
 
-class EmailJSON(BaseModel):
-  msg: str
-  title: str
-  to: Optional[str]
+
 
 
 def main():

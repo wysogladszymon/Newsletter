@@ -4,17 +4,17 @@ from dotenv import dotenv_values
 from pydantic import BaseModel
 import uvicorn
 
+class EmailJSON(BaseModel):
+  msg: str
+  title: str
+
 app = FastAPI()
 
 config = dotenv_values(".env")
 myEmail = config['EMAIL_ADDRESS']
 myPassword = config["EMAIL_PASSWORD"]
 es = EmailSender(myEmail, myPassword)
-# es.send_multiple_emails_html(['wysu@onet.pl'], 'test',msgText)
 
-class EmailJSON(BaseModel):
-  msg: str
-  title: str
 
 @app.get('/user-email')
 def get_user_email():
@@ -35,4 +35,4 @@ def sent_to_single_user(userEmail , email : EmailJSON):
     return {"status": "error"}
   
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=30000)
+  uvicorn.run(app, host="0.0.0.0", port=30000)
