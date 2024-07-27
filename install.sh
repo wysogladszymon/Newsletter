@@ -17,3 +17,16 @@ choco install nodejs --version="$nodeVersion"
 # pnpm installation
 echo "installing pnpm"
 npm install pnpm
+
+# configure frontend
+cd AdmPage/frontend
+pnpm install
+
+#configure backend
+cd ../backend
+python -m venv env
+.\env\Scripts\activate
+
+pip install python-dotenv
+pip install fastapi
+pip install pymongo

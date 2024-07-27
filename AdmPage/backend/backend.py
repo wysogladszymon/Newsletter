@@ -4,13 +4,15 @@ from pydantic import BaseModel
 import uvicorn
 from emailSender import EmailSender
 from mongoNewsletter import MongoNewsletter
-from typing import Optional
 from fastapi.middleware.cors import CORSMiddleware
+import asyncio
 
 class EmailJSON(BaseModel):
-  receiver: Optional[str]
   msg: str
   title: str
+
+class ReceiverEmailJson(EmailJSON):
+  receiver: str
 
 config = dotenv_values(".env")
 myEmail = config['EMAIL_ADDRESS']
@@ -48,7 +50,8 @@ async def send_to_all(websocket: WebSocket):
     receivers = mongo.getAllEmails()
     for receiver in receivers:
       try:
-        es.send_email_html(receiver, emailProps.title, emailProps.msg)
+        # es.send_email_html(receiver, emailProps.title, emailProps.msg)
+        await asyncio.sleep(0.1)
         await websocket.send_json({"Status": 'success', "msg": f'Email sent to {receiver}!'})
       except Exception as e:
         await websocket.send_json({"status": "error", "msg": f'Something went wrong with {receiver}: {str(e)}'})
@@ -59,7 +62,7 @@ async def send_to_all(websocket: WebSocket):
 
 
 @app.post('/user/')
-def sent_to_single_user(emailProps : EmailJSON):
+def sent_to_single_user(emailProps : ReceiverEmailJson):
   try:
     es.send_email_html(emailProps.receiver, emailProps.title, emailProps.msg)
     return {"Status": 'success', "msg": f'Email sent to {emailProps.receiver}'}
