@@ -1,12 +1,18 @@
 import { observable, action, makeAutoObservable, computed } from "mobx";
 import { generateTemplate } from "../assets/template";
 
+export interface Event{
+  msg: string,
+  date : Date
+}
+
 export class EmailStore {
   constructor() {
     makeAutoObservable(this, {
       emailBody: computed,
     });
   }
+  @observable events : Event[] = [];
 
   @observable loaded = false;
 
@@ -14,12 +20,16 @@ export class EmailStore {
 
   @observable emailHeader = "Email Header";
 
-  @observable emailAuthor = "asia@fitproject.com";
+  @observable emailAuthor = "";
 
   @observable emailMessage = "";
 
   @observable inputBody = "Your message";
 
+  @action addEvent = (event : Event) => {
+    this.events = [event, ...this.events];
+  }
+  
   @action setInputBody = (inputBody: string) => {
     this.inputBody = inputBody;
   };

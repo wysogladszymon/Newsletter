@@ -4,8 +4,8 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { useStores } from "../hooks/useStores";
 import { Button, Stack, Tab, Tabs } from "react-bootstrap";
-
-const backendAddress="127.0.0.1:8000";
+import { backendAddress } from "../assets/backendAddress";
+import { Event } from "../stores/EmailStore";
 
 export const EmailForm: React.FC<React.HTMLAttributes<HTMLDivElement>> =
   observer((props) => {
@@ -31,8 +31,6 @@ export const EmailForm: React.FC<React.HTMLAttributes<HTMLDivElement>> =
         msg: emailStore?.emailBody ?? ' ',
         receiver: receiver
       };
-      console.log(requestProps)
-      console.log(receiver)
       const response = await fetch(`http://${backendAddress}/user/`, {
         method: 'POST',
         body: JSON.stringify(requestProps),
@@ -42,7 +40,43 @@ export const EmailForm: React.FC<React.HTMLAttributes<HTMLDivElement>> =
       })
       const result = await response.json()
       console.log(result);
+      const e = {
+        msg: result.msg,
+        date : new Date(),
+      } as Event
+      emailStore?.addEvent(e);
     }
+
+    const sendMultipleEmails = () => {
+      const websocket = new WebSocket(`ws://${backendAddress}/all`);
+      
+      websocket.onopen = () => {
+        console.log('WebSocket connected');
+        const requestProps = {
+          title: emailStore?.emailTitle ?? ' ',
+          msg: emailStore?.emailBody ?? ' ',
+        };
+        websocket.send(JSON.stringify(requestProps));
+      };
+
+      websocket.onmessage = async (event) => {
+        const message = await JSON.parse(event.data);
+        const e = {
+          msg: message.msg,
+          date : new Date(),
+        } as Event
+        emailStore?.addEvent(e);
+      };
+
+      websocket.onerror = (error) => {
+        console.error("WebSocket error:", error);
+      };
+
+      websocket.onclose = () => {
+        console.log('WebSocket disconnected');
+      };
+    };
+
     return (
       <div className="w-full p-20 bg-gray-200 h-full" {...props}>
         <div className="text-2xl mb-20">
@@ -125,6 +159,7 @@ export const EmailForm: React.FC<React.HTMLAttributes<HTMLDivElement>> =
                 <Button
                   variant="primary"
                   className="mt-3 ml-auto"
+                  onClick={sendMultipleEmails}
                   style={{ backgroundColor: "#9dca00", border: "none" }}
                 >
                   Send

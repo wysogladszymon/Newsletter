@@ -111,6 +111,7 @@ export const generateTemplate = (title: string, message: string) => {
       cellspacing="0"
       class="body"
       style="
+        border-radius: 10px;
         border-collapse: separate;
         mso-table-lspace: 0pt;
         mso-table-rspace: 0pt;
@@ -334,6 +335,7 @@ export const generateTemplate = (title: string, message: string) => {
                 cellpadding="0"
                 cellspacing="0"
                 style="
+                  margin-bottom: 20px;
                   border-collapse: separate;
                   mso-table-lspace: 0pt;
                   mso-table-rspace: 0pt;
