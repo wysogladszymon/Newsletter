@@ -1,14 +1,9 @@
-import './App.css'
-import { LandingPage } from './components/LandingPage'
-import MaxWidthWrapper from './components/MaxWidthWrapper'
+import "./App.css";
+import { LandingPage } from "./components/LandingPage";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-
-  return (
-    <MaxWidthWrapper className='flex'>
-      <LandingPage/>
-    </MaxWidthWrapper>
-  )
+  return <LandingPage />;
 }
 
-export default App
+export default App;
