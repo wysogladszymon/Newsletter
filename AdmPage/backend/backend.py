@@ -50,7 +50,7 @@ async def send_to_all(websocket: WebSocket):
     receivers = mongo.getAllEmails()
     for receiver in receivers:
       try:
-        # es.send_email_html(receiver, emailProps.title, emailProps.msg)
+        es.send_email_html(receiver, emailProps.title, emailProps.msg)
         await asyncio.sleep(0.1)
         await websocket.send_json({"Status": 'success', "msg": f'Email sent to {receiver}!'})
       except Exception as e:
