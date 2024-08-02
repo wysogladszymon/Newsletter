@@ -28,8 +28,12 @@ namespace backend.Services
 
         public void RemoveEmails(string email)
         {
-            _emails.DeleteOne(e => e.name == email);
+            _emails.DeleteOne(e => e.Name == email);
         }
-
+        
+        public bool doExist(string email)
+        {
+            return this._emails.Find(e => e.Name == email).ToList().Count > 0;
+        }
     }
 }

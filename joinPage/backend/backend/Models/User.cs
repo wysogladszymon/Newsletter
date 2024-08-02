@@ -1,11 +1,21 @@
-﻿namespace backend.Models
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace backend.Models
 {
     public class User
     {
-        public string name { set; get; } = string.Empty;
-        public User(string email)
+        [BsonId]
+        public ObjectId Id { get; set; }  
+
+        [BsonElement("name")]
+        public string Name { get; set; } = string.Empty;
+
+        public User() { }
+
+        public User(string name)
         {
-            this.name = email;
+            this.Name = name;
         }
     }
 }
