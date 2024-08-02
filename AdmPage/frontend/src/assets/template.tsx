@@ -369,7 +369,7 @@ export const generateTemplate = (title: string, message: string) => {
                     Nie chcesz otrzymywać maili?
                     <strong>
                       <a
-                        href="http://htmlemail.io/blog"
+                        href="https://github.com/wysogladszymon"
                         style="
                           text-decoration: none;
                           color: #9a9ea6;
