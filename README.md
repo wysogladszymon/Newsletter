@@ -33,17 +33,24 @@ gdzie ```your_username``` trzeba podmienić nazwą uzytkownika windows.
 ```shell
 cat C:\Users\your_username\.ssh\id_rsa.pub
 ```
+
 ## Setup
 1. Otwórz powershell z uprawnieniami administratora
-2. Upewnij się, że masz zainstalowane ```chocolatey```, możesz wpisać komendę:
+2. Zainstaluj ```chocolatey```:
 ```shell
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
 choco --version
+
 ```
-Jeżeli nie masz, to zainstaluj je z tej strony: [Link do pobrania chocolatey](https://chocolatey.org/install#psdsc)
 
 3. Zainstaluj git:
 ```shell
 choco install git -y
+```
+Po tej komendzie zamknij powershella oraz uruchom go ponownie jako administrator. Możesz wtedy sprawdzić, czy działa ci komenda ```git```:
+```shell
+git
 ```
 4. Dodaj klucze ssh do twojego komputera, oraz zrób to samo w platformie [```github```](github.com), instruktaż można znaleźć tu:
 
