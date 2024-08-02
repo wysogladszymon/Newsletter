@@ -30,3 +30,9 @@ python -m venv env
 pip install python-dotenv
 pip install fastapi
 pip install pymongo
+
+# instalacja dotnet
+choco install dotnet-sdk -y
+choco install vscode -y
+
+code --install-extension ms-dotnettools.csharp
