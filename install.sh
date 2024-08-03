@@ -33,14 +33,16 @@ pnpm build
 echo "Configuring backend (Python)..."
 cd ../backend
 python -m venv env
-.\env\Scripts\activate
 
+# nie zadzialalo
+.\env\Scripts\activate
 pip install --upgrade pip
 pip install python-dotenv
 pip install fastapi
 pip install "fastapi[standard]"
 pip install pymongo
 pip install uvicorn
+# dotad
 
 # Install .NET SDK and Visual Studio Code
 echo "Installing .NET SDK and Visual Studio Code..."
