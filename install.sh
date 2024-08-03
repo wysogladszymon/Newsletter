@@ -23,11 +23,6 @@ choco install nodejs --version=$nodeVersion -y
 echo "Installing PNPM..."
 npm install -g pnpm
 
-# Clone the project repository
-echo "Cloning the project repository..."
-git clone <url_twojego_repozytorium>
-cd <nazwa_katalogu_projektu>
-
 # Configure frontend
 echo "Configuring frontend..."
 cd AdmPage/frontend
@@ -43,6 +38,7 @@ python -m venv env
 pip install --upgrade pip
 pip install python-dotenv
 pip install fastapi
+pip install "fastapi[standard]"
 pip install pymongo
 pip install uvicorn
 
