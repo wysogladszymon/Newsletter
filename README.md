@@ -64,15 +64,15 @@ ssh-add C:\Users\your_username\.ssh\id_rsa
 ```
 gdzie ```your_username``` trzeba podmienić nazwą uzytkownika windows. W moim przypadku your_username odpowiadało ```user```.
 
-4. Wyświetl klucz **publiczny** ssh, aby go skopiować i dodać do swoich kluczy ssh w github:
+3. Wyświetl klucz **publiczny** ssh, aby go skopiować i dodać do swoich kluczy ssh w github:
 ```shell
 cat C:\Users\your_username\.ssh\id_rsa.pub
 ```
-5. Dodanie klucza do platformy ```github``` pokazano na filmiku poniżej:
+4. Dodanie klucza do platformy ```github``` pokazano na filmiku poniżej:
 
 ![Instruktaż dodania klucza publicznego do ssh](https://github.com/user-attachments/assets/219db9fe-7083-4985-9082-f393479572c9)
 
-6. Jeżeli wszystko poszło pomyślnie, to w folderze ```Newsletter/AdmPage/backend``` powinien być plik ```.env```. Oraz powinno to być widoczne w aplikacji ```Visual Studio Code```, która została również zainstalowana z tym skryptem.
+5. Jeżeli wszystko poszło pomyślnie, to w folderze ```Newsletter/AdmPage/backend``` powinien być plik ```.env```. Oraz powinno to być widoczne w aplikacji ```Visual Studio Code```, która została również zainstalowana z tym skryptem.
 Po lewej stronie będzie widok całego projektu:
 
 ![image](https://github.com/user-attachments/assets/9c97930d-eff3-4ffc-984f-ea8c393bcbcb)
@@ -81,16 +81,17 @@ I tam wspomniany plik ```.env```.
 
 Należy go uzupełnić w oparciu o dane poniżej:
 
-7. Należy założyc bazę danych MongoDB, oraz skopiować klucz dostępu, a następnie wkleić go do wspomnianego pliku ```.env```.
+6. Należy założyc bazę danych MongoDB, oraz skopiować klucz dostępu, a następnie wkleić go do wspomnianego pliku ```.env```.
 
 [Zobacz film na YouTube](https://www.youtube.com/watch?v=Dg1v3-Rkxv0)
 
 Ten sam klucz należy dodać również do pliku ```.env``` ale w ścieżce ```joinPage/backend/backend ```.
 
-8. Poza kluczem MongoDB, należy także skonfigurować google i wygenerować coś co się nazywa ```Google App Password```:
+7. Poza kluczem MongoDB, należy także skonfigurować google i wygenerować coś co się nazywa ```Google App Password```.
+
 [Zobacz film na Youtube](https://www.youtube.com/watch?v=74QQfPrk4vE&ab_channel=POSITIVEGEEK)
 
-9. Po wykonaniu tych kroków aplikacja jest gotowa do uruchomienia.
+8. Po wykonaniu tych kroków aplikacja jest gotowa do uruchomienia.
 
 ## Uruchomienie
 Do uruchomienia zostały stworzone skrypty uruchomieniowe. 
