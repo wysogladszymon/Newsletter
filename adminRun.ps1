@@ -23,6 +23,7 @@ $urls = @(
   "http://localhost:3000/"
 )
 
+Start-Sleep -Seconds 3
 foreach ($url in $urls){
   Start-Process $url
 }

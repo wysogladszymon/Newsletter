@@ -24,6 +24,7 @@ $urls = @(
   "http://localhost:5001/swagger/index.html"
 )
 
+Start-Sleep -Seconds 3
 foreach ($url in $urls){
   Start-Process $url
 }
