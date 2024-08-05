@@ -15,6 +15,7 @@ Technologie, z których skorzystałem to React na frontend, a python i C# na bac
 Set-ExecutionPolicy RemoteSigned -Scope LocalMachine
 ```
 Aby pozwolić na uruchamianie skryptów instalacyjnych na tym komputerze.
+
 2. Zainstaluj ```chocolatey```:
 ```shell
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
@@ -71,6 +72,25 @@ cat C:\Users\your_username\.ssh\id_rsa.pub
 
 ![Instruktaż dodania klucza publicznego do ssh](https://github.com/user-attachments/assets/219db9fe-7083-4985-9082-f393479572c9)
 
+6. Jeżeli wszystko poszło pomyślnie, to w folderze ```Newsletter/AdmPage/backend``` powinien być plik ```.env```. Oraz powinno to być widoczne w aplikacji ```Visual Studio Code```, która została również zainstalowana z tym skryptem.
+Po lewej stronie będzie widok całego projektu:
+
+![image](https://github.com/user-attachments/assets/9c97930d-eff3-4ffc-984f-ea8c393bcbcb)
+
+I tam wspomniany plik ```.env```.
+
+Należy go uzupełnić w oparciu o dane poniżej:
+
+7. Należy założyc bazę danych MongoDB, oraz skopiować klucz dostępu, a następnie wkleić go do wspomnianego pliku ```.env```.
+
+[Zobacz film na YouTube](https://www.youtube.com/watch?v=Dg1v3-Rkxv0)
+
+Ten sam klucz należy dodać również do pliku ```.env``` ale w ścieżce ```joinPage/backend/backend ```.
+
+8. Poza kluczem MongoDB, należy także skonfigurować google i wygenerować coś co się nazywa ```Google App Password```:
+[Zobacz film na Youtube](https://www.youtube.com/watch?v=74QQfPrk4vE&ab_channel=POSITIVEGEEK)
+
+9. Po wykonaniu tych kroków aplikacja jest gotowa do uruchomienia.
 
 ## Uruchomienie
 Do uruchomienia zostały stworzone skrypty uruchomieniowe. 
