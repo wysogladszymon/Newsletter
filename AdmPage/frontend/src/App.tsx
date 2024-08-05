@@ -10,15 +10,28 @@ import { EventLog } from "./components/EventLog";
 function App() {
   const { emailStore } = useStores();
   useEffect(() => {
-    const f = async () => {
-      const response = await fetch(`http://${backendAddress}/user-email`, {
-        method: "GET",
-      });
-      const result = await response.json();
-      emailStore?.setEmailAuthor(result.email);
+    const fetchEmailAuthor = async () => {
+      try {
+        const response = await fetch(`http://${backendAddress}/user-email`, {
+          method: "GET",
+        });
+        const result = await response.json();
+        emailStore?.setEmailAuthor(result.email);
+      } catch (error) {
+        console.error("Failed to fetch email author", error);
+      }
     };
-    f();
-  });
+
+    const intervalId = setInterval(() => {
+      if (emailStore?.emailAuthor) {
+        clearInterval(intervalId); 
+      } else {
+        fetchEmailAuthor();
+      }
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [emailStore]);
 
   return (
     <div className={`flex w-[100vw] h-[100vh]`}>
@@ -26,12 +39,12 @@ function App() {
         <EmailForm />
       </div>
       <div className="w-1/2">
-        <Tabs defaultActiveKey='emailView' className='absolute'>
-          <Tab title='Email Preview' eventKey='emailView'>
+        <Tabs defaultActiveKey="emailView" className="absolute">
+          <Tab title="Email Preview" eventKey="emailView">
             <EmailView />
           </Tab>
-          <Tab title='Event Log' eventKey='logView'>
-            <EventLog/>
+          <Tab title="Event Log" eventKey="logView">
+            <EventLog />
           </Tab>
         </Tabs>
       </div>
