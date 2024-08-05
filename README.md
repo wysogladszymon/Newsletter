@@ -52,7 +52,7 @@ cd Newsletter
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 ![asia](https://github.com/user-attachments/assets/76e22a91-8044-4fc8-89b2-b3f42d6fab99)
-Zwróc uwagę na to co się wyświetli, ponieważ tam zostanie dodany twój klucz.
+Zwróc uwagę na to co się wyświetli, ponieważ tam zostanie dodany twój klucz (czerwona strzałka na obrazku wyżej).
 
 W kolejnych krokach będziesz musiała skorzystać z tej ścieżki, w której są dwa klucze:
 - id_rsa (klucz prywatny)
@@ -68,12 +68,33 @@ gdzie ```your_username``` trzeba podmienić nazwą uzytkownika windows. W moim p
 cat C:\Users\your_username\.ssh\id_rsa.pub
 ```
 5. Dodanie klucza do platformy ```github``` pokazano na filmiku poniżej:
+
 ![Instruktaż dodania klucza publicznego do ssh](https://github.com/user-attachments/assets/219db9fe-7083-4985-9082-f393479572c9)
 
 
 ## Uruchomienie
+Do uruchomienia zostały stworzone skrypty uruchomieniowe. 
+Aby je uruchomić należy:
+- Uruchomić powershell jako administrator
+- Wejść do katalogu roboczego projektu używając metody 
+```shell
+# cd <ścieżka bezwzględna do projektu (tam, gdzie wpisywana była metoda git clone (Setup pkt. 6) z końcówką \Newsletter)> np.
+cd C:\Szymon\projekt\dla\ASI\Newsletter
+```
 
-
+Spełniając te dwa wymogi należy wpisać:
+### Uruchom cały projekt
+```shell
+.\run.ps1
+```
+### Uruchom tylko Admin Page
+```shell
+.\adminRun.ps1
+```
+### Uruchom tylko Join Page
+```shell
+.\joinRun.ps1
+```
 ## Demo
 
 ![Zdjęcie 1](https://github.com/user-attachments/assets/42689cdf-742d-4e8d-b67f-89cd8bbdb014)
